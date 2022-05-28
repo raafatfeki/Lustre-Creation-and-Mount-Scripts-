@@ -1,8 +1,8 @@
 #!/bin/bash
 
-KERNEL_VERSION="4.4.79-18.26"
-LNET_CONF="options lnet networks=tcp1(ib0)"
-SOURCE_NODE_NAME="crill"
+source `dirname $0`/config.sh
+
+define_vars
 
 FAILED_INSTALL=""
 

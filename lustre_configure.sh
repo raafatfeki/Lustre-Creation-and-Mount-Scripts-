@@ -1,28 +1,6 @@
 #!/bin/bash
 
-define_vars() {
-	ZFS_PATH="/opt/zfs/0.7.13/usr/sbin/"
-	LUSTRE_PATH="/opt/lustre/2.12.2/sbin/"
-	SPL_PATH="/opt/spl/0.7.13/sbin/"
-	export PATH=$PATH:$ZFS_PATH:$LUSTRE_PATH:$SPL_PATH
-
-	MDS_SSH_ADD="crilladm2.pstl.uh.edu"
-        MDS_NODE="crilladm2"
-	if [ "$HOSTNAME" = "$MDS_NODE" ]; then
-		MGS_NID=`lctl list_nids`
-	else
-		MGS_NID=`ssh -o StrictHostKeyChecking=no $MDS_SSH_ADD 'lctl list_nids '`
-	fi
-	MGS_DEVICE="/dev/nvme0n1p1"
-	DEFAULT_MGS_INDEX=0
-	FSNAME=lustre
-	BACKFSTYPE=zfs
-	DEVICES=(sdb2 sdc2)
-	DEVICES_RAID0="/dev/${DEVICES[0]} /dev/${DEVICES[1]}"
-
-	# Do not change this var
-	VARS_LIST="ZFS_PATH LUSTRE_PATH SPL_PATH MDS_SSH_ADD MDS_NODE MGS_NID MGS_DEVICE DEFAULT_MGS_INDEX FSNAME BACKFSTYPE DEVICES_RAID0"
-}
+source `dirname $0`/config.sh
 
 check_pool_exist() {
 	POOL_NAME=$1

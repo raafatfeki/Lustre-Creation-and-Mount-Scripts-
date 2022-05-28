@@ -1,19 +1,12 @@
 #!/bin/bash
 
+source `dirname $0`/config.sh
+
+define_vars
+
 ##############################################################################################
 #											MGS/MDS 										 #
 ##############################################################################################
-
-MDS_POOL="mgs_mds/mgt_mdt0"
-MDS_SSH_ADD="MDS_URL_FOR_SSH"
-MDS_NODE="MDS_NODE_NAME"
-MDT_MOUNT_PATH="/lustre_mgt_mdt0"
-FSNAME=lustre
-MGS_NID="10.10.1.197@tcp1"
-CLIENT_MOUNT="/mnt/lustre/"
-MOUNT_LINK="/lustre"
-
-FAILED_MOUNT_NODE=""
 
 mount_mgsmds() {
 	echo "***************** Mount (MDS/MGS) $MDS_NODE *****************"
@@ -87,6 +80,8 @@ umount_osts() {
 
 mount_clients() {
 	echo "***************** Mount Clients *****************"
+
+	FAILED_MOUNT_NODE=""
 
 	for CLIENT_NAME  in `cat conf/client_nodes.txt`
 	do
