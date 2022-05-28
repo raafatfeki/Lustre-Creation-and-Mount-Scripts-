@@ -6,9 +6,8 @@ define_vars() {
 	SPL_PATH="/opt/spl/0.7.13/sbin/"
 	export PATH=$PATH:$ZFS_PATH:$LUSTRE_PATH:$SPL_PATH
 
-	# TODO: Change MDS_URL_FOR_SSH and MDS_NODE resp. to the server URL and the server name.
-	MDS_SSH_ADD="MDS_URL_FOR_SSH"
-	MDS_NODE="MDS_NODE_NAME"
+	MDS_SSH_ADD="crilladm2.pstl.uh.edu"
+        MDS_NODE="crilladm2"
 	if [ "$HOSTNAME" = "$MDS_NODE" ]; then
 		MGS_NID=`lctl list_nids`
 	else

@@ -2,7 +2,7 @@
 
 KERNEL_VERSION="4.4.79-18.26"
 LNET_CONF="options lnet networks=tcp1(ib0)"
-SOURCE_NODE_NAME="SourceNode"
+SOURCE_NODE_NAME="crill"
 
 FAILED_INSTALL=""
 
