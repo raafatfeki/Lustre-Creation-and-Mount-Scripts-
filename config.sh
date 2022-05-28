@@ -17,10 +17,7 @@ define_vars() {
 	DEVICES=(sdb2 sdc2)
 
 	MDS_POOL="mgs_mds/mgt_mdt0"
-	MDS_SSH_ADD="MDS_URL_FOR_SSH"
-	MDS_NODE="MDS_NODE_NAME"
 	MDT_MOUNT_PATH="/lustre_mgt_mdt0"
-	FSNAME=lustre
 	CLIENT_MOUNT="/mnt/lustre/"
 	MOUNT_LINK="/lustre"
 
@@ -43,3 +40,4 @@ define_vars() {
 
 	VARS_LIST="ZFS_PATH LUSTRE_PATH SPL_PATH MDS_SSH_ADD MDS_NODE MGS_NID MGS_DEVICE DEFAULT_MGS_INDEX FSNAME BACKFSTYPE DEVICES_RAID0"
 }
+

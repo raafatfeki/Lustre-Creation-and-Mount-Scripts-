@@ -64,7 +64,7 @@ umount_osts() {
 	echo "***************** Unmount OSTs *****************"
 
 	INDEX=0
-	for SERVER_NAME  in `cat ./hosts_osts`
+	for SERVER_NAME  in `cat conf/ost_nodes.txt`
 	do
 		# INDEX=$((10#`echo $SERVER_NAME | cut -d"-" -sf2`))
 		let "INDEX=INDEX+1"
@@ -135,14 +135,11 @@ umount_clients() {
 	done
 }
 
+umount_clients -l
+umount_osts
+umount_osts
+umount_mgsmds
+mount_mgsmds
+mount_osts
+mount_clients
 
-
-clients_umount.sh -l
-osts_umount.sh
-osts_umount.sh
-mgs_umount.sh
-mgs_mount.sh
-#lustre_configure.sh
-osts_mount.sh
-osts_mount.sh
-clients_mount.sh 

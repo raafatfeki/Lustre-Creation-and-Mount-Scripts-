@@ -148,7 +148,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	    	res=`ssh -o StrictHostKeyChecking=no $SERVER_NAME "$(typeset -f define_vars remove_zpools set_ost); define_vars; remove_zpools; set_ost ${SERVER_INDEX_MAP[$SERVER_NAME]}"`
 		fi
 		echo -e "$res"
-		IF_FAILED=`echo -e "$res" | awk 'NR==10 {print $4}'`
+		IF_FAILED=`echo -e "$res" | awk 'END {print $4}'`
 		if [[ $IF_FAILED != "Successfully" ]]; then
 			FAILING_NODES="$FAILING_NODES $SERVER_NAME"
 		fi
